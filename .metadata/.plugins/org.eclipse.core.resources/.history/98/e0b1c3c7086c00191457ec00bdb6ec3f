@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html 	xmlns:th="http://wwww.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>DESIGNATION</th>
+			<th>PRIX</th>
+			<th>QUANTITE</th>
+		</tr>
+		<tr>
+			
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,29 @@
+package com.tfarmel;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.tfarmel.dao.ProduitRepository;
+import com.tfarmel.entities.Produit;
+
+@SpringBootApplication
+public class CatalMvcApplication implements CommandLineRunner {
+	
+	@Autowired
+	private ProduitRepository produitRepository;
+
+	public static void main(String[] args) {
+		SpringApplication.run(CatalMvcApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		produitRepository.save(new Produit("PC 2536", 600, 120));
+		produitRepository.save(new Produit("Imprimante HP 1234", 250, 100));
+		produitRepository.save(new Produit("PC comppaq", 520, 32));
+		produitRepository.save(new Produit("Scanner", 300, 12));
+	}
+
+}

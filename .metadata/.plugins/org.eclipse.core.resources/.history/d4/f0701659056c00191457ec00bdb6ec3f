@@ -1,0 +1,18 @@
+package com.tfarmel.web;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import com.tfarmel.dao.ProduitRepository;
+
+@Controller
+public class ProduitController {
+	
+	@Autowired
+	private ProduitRepository produitRepository;
+	
+	public String index() {
+		return "produits";
+	}
+
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://wwww.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gestion de produit</title>
+<link rel="stylesheet" type="text/css"
+	href="../static/css/fontawesome/css/fontawesome.min.css" th:href="@{/css/fontawesome/css/fontawesome.min.css}" />
+	<link rel="stylesheet" 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" 	href="../static/css/bootstrap.min.css" 	th:href="@{/css/bootstrap.min.css}" />
+	<link rel="stylesheet" type="text/css" href="../static/css/style.css" 	th:href="@{/css/style.css}" />
+</head>
+<body>
+	<!-- Header -->
+	<header>
+		<div class="container">
+			<div class="row banner">
+	          <img src="img/banner.png" class="img-fluid" alt="Responsive image">
+	        </div>
+			<div class="row">
+				<!-- Nav -->
+				<nav class="col-12 navigation">
+					<ul class="nav-list">
+						<li><a href="index.php">Accueil</a></li>
+						<li><a href="generale.php">Generale</a></li>
+						<li><a href="#">SVT</a></li>
+						<li><a href="#">Histoire</a></li>
+					</ul>
+				</nav>
+				<!-- /Nav -->
+			</div>
+		</div>
+	</header>
+	<br>
+	<div class="container">
+		<div class="card">
+			<div class="card-header ">Liste des produits</div>
+			<div class="card-body">
+				<form th:action="@{/index}" method="get">
+					<label>Mot clé</label>
+					<input type="text" name="motCle" th:value="${motCle}">
+					<button type="submit" class="btn btn-primary">Chercher</button>
+				</form>
+			</div>
+			<div class="card-body">
+				<table class="table table-striped table-bordered">
+					<tr>
+						<th>ID</th>
+						<th>DESIGNATION</th>
+						<th>PRIX</th>
+						<th>QUANTITE</th>
+					</tr>
+					<tr th:each="p:${listProduits}">
+						<td th:text="${p.id}"></td>
+						<td th:text="${p.designation}"></td>
+						<td th:text="${p.prix}"></td>
+						<td th:text="${p.quantite}"></td>
+						<td>
+							<a onclick="return confirm('Etes-vous sure?')'" th:href="@{/delete(id=${p.id}, page=${currentPage}, motCle=${motCle})}">Delete</a>
+						</td>
+					</tr>
+				</table>
+				<ul class="pagination">
+					<li th:classappend="${currentPage==status.index}?active:''" class="page-item" th:each="page,status:${pages}">
+						<a class="page-link" th:href="@{/index(page=${status.index}, motCle=${motCle})}" th:text="${status.index}"></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<br>
+</body>
+</html>
